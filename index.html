@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Personal Website</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #070719;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 30, 0.45);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #f5dfff;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #d8a7ff;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 120px 8% 60px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 72% 30%, rgba(255,255,255,0.9) 0%, rgba(235,220,255,0.7) 8%, rgba(155,110,220,0.18) 22%, transparent 36%),
+        linear-gradient(to bottom, #08051d 0%, #11113b 45%, #1a1247 75%, #090816 100%);
+    }
+
+    /* Big Moon */
+    .moon {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      right: 12%;
+      top: 18%;
+      background: radial-gradient(circle, #ffffff 0%, #f4e7ff 45%, #c6a6ff 100%);
+      box-shadow:
+        0 0 40px #ffffff,
+        0 0 90px #d6b4ff,
+        0 0 160px rgba(205, 170, 255, 0.8);
+      z-index: 1;
+    }
+
+    /* Stars */
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+      background-size: 80px 80px, 120px 120px;
+      background-position: 0 0, 40px 60px;
+      opacity: 0.35;
+      animation: twinkle 5s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 0.55; }
+    }
+
+    /* Princess Silhouette */
+    .princess {
+      position: absolute;
+      right: 18%;
+      bottom: 0;
+      width: 260px;
+      height: 520px;
+      z-index: 2;
+    }
+
+    .princess .head {
+      width: 72px;
+      height: 72px;
+      background: #13091d;
+      border-radius: 50%;
+      position: absolute;
+      top: 30px;
+      left: 96px;
+      box-shadow: 0 0 20px rgba(255, 220, 255, 0.4);
+    }
+
+    .princess .hair {
+      width: 110px;
+      height: 150px;
+      background: #100718;
+      border-radius: 60px 60px 50px 50px;
+      position: absolute;
+      top: 25px;
+      left: 78px;
+      z-index: -1;
+    }
+
+    .princess .crown {
+      position: absolute;
+      top: 0;
+      left: 101px;
+      width: 60px;
+      height: 45px;
+      background: linear-gradient(45deg, #ffe99c, #d8a947);
+      clip-path: polygon(0 100%, 15% 35%, 35% 100%, 50% 10%, 65% 100%, 85% 35%, 100% 100%);
+      filter: drop-shadow(0 0 10px #ffe99c);
+    }
+
+    .princess .body {
+      width: 70px;
+      height: 130px;
+      background: #16091f;
+      position: absolute;
+      top: 100px;
+      left: 96px;
+      border-radius: 35px 35px 15px 15px;
+    }
+
+    .princess .dress {
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      width: 220px;
+      height: 320px;
+      background: linear-gradient(to bottom, #1b0c2b, #08030f);
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+      box-shadow: 0 0 35px rgba(220, 180, 255, 0.25);
+    }
+
+    .princess .dress::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 30%, rgba(225, 190, 255, 0.25), transparent 45%);
+    }
+
+    .hero-content {
+      max-width: 620px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .hero-content h1 {
+      font-size: 58px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .hero-content h1 span {
+      color: #e1b6ff;
+      text-shadow: 0 0 20px rgba(225, 182, 255, 0.6);
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #e8e2f5;
+      margin-bottom: 35px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #d8a7ff, #8e5cff);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 0 25px rgba(216, 167, 255, 0.45);
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 35px rgba(216, 167, 255, 0.8);
+    }
+
+    /* GENERAL SECTION */
+    section {
+      padding: 90px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 38px;
+      margin-bottom: 50px;
+      color: #f3ddff;
+    }
+
+    .section-title span {
+      color: #b98cff;
+    }
+
+    /* ABOUT */
+    .about {
+      background: linear-gradient(to bottom, #090816, #11102a);
+    }
+
+    .about-box {
+      max-width: 950px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      padding: 40px;
+      border-radius: 25px;
+      line-height: 1.8;
+      color: #e9e1f5;
+      box-shadow: 0 0 35px rgba(160, 120, 255, 0.15);
+    }
+
+    .about-box h3 {
+      font-size: 28px;
+      color: #ffffff;
+      margin-bottom: 18px;
+    }
+
+    /* SKILLS */
+    .skills {
+      background: #11102a;
+    }
+
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 30px;
+      border-radius: 22px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.13);
+      box-shadow: 0 0 25px rgba(190, 140, 255, 0.25);
+    }
+
+    .skill-card .icon {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .skill-card h3 {
+      color: #f2d9ff;
+      margin-bottom: 12px;
+    }
+
+    .skill-card p {
+      color: #d8d0e8;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* JOURNEY */
+    .journey {
+      background: linear-gradient(to bottom, #11102a, #080816);
+    }
+
+    .timeline {
+      max-width: 850px;
+      margin: auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 3px;
+      height: 100%;
+      background: #b98cff;
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      width: 50%;
+      padding: 25px 35px;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+
+    .timeline-content {
+      background: rgba(255,255,255,0.08);
+      padding: 25px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .timeline-content h3 {
+      color: #f2d9ff;
+      margin-bottom: 10px;
+    }
+
+    .timeline-content p {
+      color: #ddd4ec;
+      line-height: 1.6;
+    }
+
+    /* GALLERY */
+    .gallery {
+      background: #080816;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+    }
+
+    .gallery-item {
+      height: 230px;
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03)),
+        radial-gradient(circle at center, #b98cff, #1d1640);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f4e7ff;
+      font-size: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 0 25px rgba(160, 120, 255, 0.15);
+    }
+
+    /* CONTACT */
+    .contact {
+      background: linear-gradient(to bottom, #080816, #130b28);
+    }
+
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      background: rgba(255,255,255,0.08);
+      padding: 40px;
+      border-radius: 25px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .contact-box input,
+    .contact-box textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 18px;
+      border: none;
+      outline: none;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.12);
+      color: white;
+      font-size: 15px;
+    }
+
+    .contact-box input::placeholder,
+    .contact-box textarea::placeholder {
+      color: #ccc;
+    }
+
+    .contact-box textarea {
+      height: 130px;
+      resize: none;
+    }
+
+    .contact-box button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #d8a7ff, #8e5cff);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .contact-box button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(216, 167, 255, 0.5);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #070719;
+      color: #cfc6df;
+      font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero {
+        text-align: center;
+        justify-content: center;
+      }
+
+      .hero-content h1 {
+        font-size: 42px;
+      }
+
+      .moon {
+        width: 220px;
+        height: 220px;
+        right: 50%;
+        transform: translateX(50%);
+        top: 13%;
+        opacity: 0.7;
+      }
+
+      .princess {
+        opacity: 0.35;
+        right: 50%;
+        transform: translateX(50%);
+      }
+
+      .timeline::before {
+        left: 10px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        text-align: left !important;
+        padding-left: 35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">Moon Princess</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="stars"></div>
+    <div class="moon"></div>
+
+    <div class="princess">
+      <div class="crown"></div>
+      <div class="hair"></div>
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="dress"></div>
+    </div>
+
+    <div class="hero-content">
+      <h1>Hello, I’m <span>Your Name</span></h1>
+      <p>
+        Welcome to my personal website. This is a special space where I share
+        my story, personality, dreams, skills, and journey under the light of a
+        beautiful moon.
+      </p>
+      <a href="#about" class="btn">Discover My Story</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <h2 class="section-title">About <span>Me</span></h2>
+
+    <div class="about-box">
+      <h3>My Personal Introduction</h3>
+      <p>
+        Hi, my name is <strong>Your Name</strong>. I am someone who believes in
+        growth, creativity, kindness, and chasing dreams with courage. This
+        section can be edited later to include your background, personality,
+        interests, education, hobbies, and personal story.
+      </p>
+      <br />
+      <p>
+        I created this website as a beautiful and meaningful introduction of
+        myself. Just like the moon lights up the night sky, I hope my journey
+        can inspire others and show who I truly am.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <h2 class="section-title">My <span>Skills</span></h2>
+
+    <div class="skills-container">
+      <div class="skill-card">
+        <div class="icon">✨</div>
+        <h3>Creativity</h3>
+        <p>I enjoy creating ideas, designs, and meaningful work with imagination.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="icon">💬</div>
+        <h3>Communication</h3>
+        <p>I can express ideas clearly and connect well with people.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="icon">🌙</div>
+        <h3>Confidence</h3>
+        <p>I believe in learning, improving, and becoming better each day.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="icon">👑</div>
+        <h3>Leadership</h3>
+        <p>I am willing to take responsibility and guide others when needed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="journey" id="journey">
+    <h2 class="section-title">My <span>Journey</span></h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>Education</h3>
+          <p>Add your school, college, university, or learning background here.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>Experience</h3>
+          <p>Add your work experience, project experience, or activities here.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>Achievements</h3>
+          <p>Add your awards, certificates, success stories, or proud moments here.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>Future Goals</h3>
+          <p>Add your dreams, ambitions, and plans for the future here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <h2 class="section-title">My <span>Gallery</span></h2>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">Photo 1</div>
+      <div class="gallery-item">Photo 2</div>
+      <div class="gallery-item">Photo 3</div>
+      <div class="gallery-item">Photo 4</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2 class="section-title">Contact <span>Me</span></h2>
+
+    <div class="contact-box">
+      <form onsubmit="sendMessage(event)">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Your Name. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function sendMessage(event) {
+      event.preventDefault();
+      alert("Thank you! Your message has been received.");
+    }
+
+    // Simple fade-in animation when scrolling
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    sections.forEach(section => {
+      section.style.opacity = "0";
+      section.style.transform = "translateY(40px)";
+      section.style.transition = "0.8s ease";
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+</html>
